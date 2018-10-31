@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Index";
-    ViewData["List_Student"] = "Model";
 }
 <environment names="Development">
     <link rel="stylesheet" href="~/css/MyCss.css" />
@@ -47,7 +46,7 @@
                     <td>
                         <a href="Student/Edit/@item.Id">Edit</a> |
                         @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
-                        <a href="Student/Delete/@item.Id">Delete</a>
+                        <a href="javascript:void(0)" class="btnDelete" id="student-@item.Id">Delete</a>
                     </td>
                 </tr>
             }
@@ -56,5 +55,5 @@
 }
 else
 {
-    <h2>Hiện chưa có Sinh viên nào trong danh sách <a asp-action="Create">Ấn đây</a> để thêm mới sinh vi</h2>
+    <h3>Hiện chưa có Sinh viên nào trong danh sách <a asp-action="Create">Ấn đây</a> để thêm mới sinh viên</h3>
 }

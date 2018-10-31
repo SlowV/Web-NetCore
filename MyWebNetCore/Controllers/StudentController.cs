@@ -16,6 +16,16 @@ namespace MyWebNetCore.Controllers
         public StudentController(WebModelContext context)
         {
             _context = context;
+            if (!_context.Products.Any())
+            {
+                _context.Products.Add(new Product() {
+                    Name = "Bánh mỳ",
+                    CategoryId = 1,
+                    Images = "http://www.puratosgrandplace.com/Data/Sites/1/media/news/ba%CC%81nh-mi%CC%80-5.jpg",
+                    Status = 1
+                });
+                _context.SaveChanges();
+            }
         }
 
         [HttpGet]
@@ -43,7 +53,6 @@ namespace MyWebNetCore.Controllers
         }
 
         // GET: Student/Edit/5
-        [HttpGet("{id}")]
         [Route("Student/Edit/{id}")]
         public ActionResult<Student> Edit(long id)
         {
@@ -74,7 +83,7 @@ namespace MyWebNetCore.Controllers
         }
 
         // GET: Student/Delete/5
-        [HttpGet("{id}")]
+        [HttpPost]
         [Route("Student/Delete/{id}")]
         public ActionResult Delete(long id)
         {

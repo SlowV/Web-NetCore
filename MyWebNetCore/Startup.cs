@@ -27,7 +27,7 @@ namespace MyWebNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebModelContext>(opt =>
-                opt.UseInMemoryDatabase("StudentList"));
+                opt.UseSqlServer(Configuration.GetConnectionString("MyConnectionString")));
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

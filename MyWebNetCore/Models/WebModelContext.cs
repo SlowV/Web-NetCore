@@ -14,5 +14,16 @@ namespace MyWebNetCore.Models
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(b => b.Created_At)
+                .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Product>()
+                .Property(c => c.Updated_At)
+                .HasDefaultValueSql("getdate()");
+        }
     }
 }
